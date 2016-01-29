@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/AudaciousSupernova/thesis.png?label=ready&title=Ready)](https://waffle.io/AudaciousSupernova/thesis)
 # thesis
 Nova
 
