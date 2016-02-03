@@ -17,14 +17,15 @@
       <span class="navBar" ng-click="viewHome()">Home</span>
       <span class="navBar" ng-click="viewProfile()">Profile</span>
       <span class="navBar" ng-click="viewPortfolio()">Your Fortune</span>
-      <span class="navBar" ng-click="logout()">Logout</span>
-      <span><input></input></span>
+      <span class="right"><input></input>
+      <span class="navBar logout" ng-click="logout()">Logout</span>
+      </span>
       <span></span>
       <span></span>
     </div>
     <div class = "spaceHolder">s</div>
     <script src="libs/angular/angular.min.js"> </script>
-    <div ui-view> </div>
+    <div class = "view" ui-view> </div>
     <!-- dependancies -->
     <script src="libs/angular-route/angular-route.min.js"> </script>
     <script src="libs/angular-ui-router/release/angular-ui-router.min.js"> </script>
