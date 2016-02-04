@@ -15,8 +15,17 @@ angular.module('app.services', [])
       })
     },
 
-    getLeaderData: function() {
+    getUserByPartial: function(partial){
+      return $http({
+        method: 'GET',
+        url: '/users/partial/' + partial,
+      })
+      .then(function(res) {
+        return res.data;
+      })      
+    },
 
+    getLeaderData: function() {
       return $http({
         method: 'GET',
         url: '/leaders',

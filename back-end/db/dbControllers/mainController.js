@@ -43,6 +43,18 @@ var findUser = function(name, password, callback){
 	})
 }
 
+var findUsersByPartial = function(string, callback){
+	string+= "%"
+	connection.query('SELECT * FROM users WHERE name LIKE ?', string, function(err, rows){
+		// just do callback(err, user)
+		if(err){
+			console.log("Error finding user by partial :", err)
+			callback(err, null);
+		} else{
+			callback(null, rows);
+		}
+	})	
+}
 
 //finds the user by id, useful for buy/sell events
 //returns an array of obj's (should only be one)
@@ -369,4 +381,5 @@ module.exports = {
 	getStockRow: getStockRow,
 	updateStock: updateStock,
 	deleteStock: deleteStock,
+	findUsersByPartial: findUsersByPartial,
 }

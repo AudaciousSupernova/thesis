@@ -1,8 +1,10 @@
 angular.module('app.index', [])
 
-.controller('IndexController', function($scope, $rootScope, $location, $http, Newsfeed, Root, Auth) {
-
+.controller('IndexController', function($scope, $rootScope, $location, $http, Newsfeed, Root, Auth, User) {
   $scope.currentUserInfo = false;
+  $scope.searchResults;
+  $scope.searchQuery = ""
+
   $scope.viewHome = function () {
     $location.path('/newsfeed');
   }
@@ -25,6 +27,17 @@ angular.module('app.index', [])
       }, function errorCallback(response) {
         console.log('something happened. you aren\'t logged out!')
       });
+  }
+
+  $scope.findUsersByPartial = function(){
+    if($scope.searchQuery.length){
+      User.getUserByPartial($scope.searchQuery)
+      .then(function(response){
+        $scope.searchResults = response;
+      })    
+    } else {
+      $scope.searchResults = [];
+    }
   }
 
   Auth.checkLoggedIn().then(function(boolean) {

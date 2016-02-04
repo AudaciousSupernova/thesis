@@ -41,6 +41,18 @@ module.exports = function (app, express) {
     })
   });
 
+  //finds all users by a partial string and returns an array of them
+  app.get('/users/partial/:partial', function(req, res){
+    var partial = req.params.partial;
+    mainController.findUsersByPartial(partial, function(error, response) {
+      if (error) {
+        console.log("there was an error getting the users by partial", error);
+      } else {
+        res.send(response);
+      }
+    })
+  });  
+
   app.post('/profile/buy', function(req, res) {
     var investment = req.body.investment;
     mainController.addStock(investment, function(err, results) {

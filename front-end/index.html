@@ -10,14 +10,15 @@
 
   <body ng-controller="IndexController">
     <div class = "navbar" ng-show = "currentUserInfo">
-      <span  class = "currentUserNavBar">
+      <span class = "currentUserNavBar">
         <span> Welcome {{currentUserInfo.name}}! </span>
         <span> {{currentUserInfo.karma}} Karma</span>
       </span>
       <span class="navBar" ng-click="viewHome()">Home</span>
       <span class="navBar" ng-click="viewProfile()">Profile</span>
       <span class="navBar" ng-click="viewPortfolio()">Your Fortune</span>
-      <span class="right"><input></input>
+      <span class="right"><input type = "text" ng-model = "searchQuery" ng-change = "findUsersByPartial()"/><span class = "dropdown">
+        <div ng-repeat = "user in searchResults"><a href="/#/profile/{{user.id}}">{{user.name}}</a></div></span>
       <span class="navBar logout" ng-click="logout()">Logout</span>
       </span>
       <span></span>
